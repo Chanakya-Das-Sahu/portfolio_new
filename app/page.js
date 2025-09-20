@@ -102,7 +102,9 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'achievements', 'gallery', 'skills', 'projects', 'experience', 'certificates'];
+
+      const sections = ['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'];
+
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -153,7 +155,7 @@ const Portfolio = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {['home', 'achievements', 'gallery', 'skills', 'projects', 'experience', 'certificates'].map((item) => (
+              {['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
