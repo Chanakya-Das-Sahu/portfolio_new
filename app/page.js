@@ -4,6 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
 import { SiMongodb, SiJavascript } from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
+import {
+  FaShoppingCart,
+  FaStickyNote,
+  FaQuestionCircle,
+  FaComments,
+  FaRobot,
+  FaGlobe,
+  FaCalendarAlt,
+  FaUniversity,
+  FaGraduationCap,
+  FaTrophy,
+  FaFileAlt
+} from 'react-icons/fa';
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -298,7 +311,7 @@ const Portfolio = () => {
                         <p className="text-blue-600 font-medium mb-2">{exp.company}</p>
                         <p className="text-gray-500 text-sm mb-4">{exp.duration}</p>
                         <div className="mb-4">
-                          <h4 className="font-semibold text-gray-700 mb-2">Projects:</h4>
+                          {/* <h4 className="font-semibold text-gray-700 mb-2">Projects:</h4> */}
                           <ul className="list-disc list-inside text-gray-600">
                             {exp.projects.map((project, i) => (
                               <li key={i}>{project}</li>
@@ -593,115 +606,116 @@ const Portfolio = () => {
 
 
         {/* Projects Section */}
-        <section id="projects" className="py-20 bg-gray-50">
+        <section id="projects" className="">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Projects</h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
+            <section id="projects" className="bg-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-12"
                 >
-                  <div className="h-48 bg-gray-200 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-                    <div className="flex justify-between items-center mt-4">
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-blue-600 hover:text-blue-800"
-                      >
-                        <FaGithub className="mr-1" /> Code
-                      </a>
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-green-600 hover:text-green-800"
-                      >
-                        <FiExternalLink className="mr-1" /> Live Demo
-                      </a>
-                    </div>
-                  </div>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">Projects</h2>
+                  <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
                 </motion.div>
-              ))}
-            </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {projects.map((project, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      whileHover={{ y: -5 }}
+                      className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition flex flex-col"
+                    >
+                      <div className="text-4xl text-blue-600 mb-4 flex justify-center">
+                        {project.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">{project.title}</h3>
+                      <p className="text-gray-600 mb-4 text-center text-sm flex-grow">{project.description}</p>
+                      <div className="flex justify-between items-center mt-auto">
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-blue-600 hover:text-blue-800 text-sm"
+                        >
+                          <FaGithub className="mr-1" /> Code
+                        </a>
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-green-600 hover:text-green-800 text-sm"
+                        >
+                          <FiExternalLink className="mr-1" /> Live Demo
+                        </a>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
           </div>
         </section>
 
 
 
         {/* Certificates Section */}
-        <section id="certificates" className="py-20 bg-gray-50">
+        <section id="certificates" className=" my-10 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-                <FaCertificate className="mr-2 text-green-500" /> Certificates
-              </h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </motion.div>
 
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {certificates.map((cert, index) => (
+          
+            {/* Certificates Section */}
+            <section id="certificates" className="py-20 bg-white">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-12"
                 >
-                  <div className="h-48 bg-gray-200 flex items-center justify-center">
-                    <img src={cert.image} alt={cert.title} className="w-full h-full object-cover transition duration-500 hover:scale-105" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{cert.title}</h3>
-                    <p className="text-gray-600 mb-4">{cert.issuer}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-500">{cert.date}</span>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+                    <FaCertificate className="mr-2 text-green-500" /> Certificates
+                  </h2>
+                  <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {certificates.map((cert, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      whileHover={{ scale: 1.02 }}
+                      className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition flex flex-col items-center"
+                    >
+                      <div className="text-4xl text-green-600 mb-4">
+                        {cert.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">{cert.title}</h3>
+                      <p className="text-gray-600 mb-2 text-center text-sm">{cert.issuer}</p>
+                      <span className="text-sm text-gray-500 mb-4">{cert.date}</span>
                       <a
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 flex items-center"
+                        className="text-blue-600 hover:text-blue-800 flex items-center text-sm"
                       >
-                        View <FiExternalLink className="ml-1" />
+                        View Certificate <FiExternalLink className="ml-1" />
                       </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
           </div>
         </section>
       </main>
@@ -771,54 +785,139 @@ const skills = [
   { name: "Java", icon: <FaJava /> }
 ];
 
+// const projects = [
+//   {
+//     title: "Ecommerce Web Application",
+//     image: "https://img.freepik.com/free-vector/colorful-e-commerce-concept_23-2147660279.jpg",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/Ecommerce",
+//     liveLink: "https://chanakya-ecommerce.netlify.app"
+//   },
+//   {
+//     title: "Notes Web Application",
+//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvc_zyVFVvAI4uYh9c5-R4yt5sjOckPHr3fg&s",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/NotesApp",
+//     liveLink: "https://chanakya-notesapp.netlify.app"
+//   },
+//   {
+//     title: "MCQ Generator",
+//     image: "https://static.vecteezy.com/system/resources/thumbnails/003/133/679/small/choose-multiple-option-vector.jpg",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/Paragraph-MCQ-Generator---AI--",
+//     liveLink: "https://chanakya-mcq-generator.netlify.app"
+//   },
+//   {
+//     title: "Customer Care Chatbot",
+//     image: "https://thumbs.dreamstime.com/b/print-330119464.jpg",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/MATS_GPT",
+//     liveLink: "https://matsgpt.netlify.app"
+//   },
+//   {
+//     title: "General Chatbot",
+//     image: "https://media.istockphoto.com/id/1073043572/vector/robot-icon-bot-sign-design-chatbot-symbol-concept-voice-support-service-bot-online-support.jpg?s=612x612&w=0&k=20&c=IpqF1oBpILXVKmCPj63IftCxgDzNcTe7bvWnd-wSapw=",
+//     githubLink: "",
+//     liveLink: "https://chanakya-chatbot.netlify.app"
+//   },
+//   {
+//     title: "Company Website",
+//     image: "https://i.pinimg.com/1200x/65/f9/f0/65f9f0c8e34c52318a4bb3b20e4e31cc.jpg",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
+//     liveLink: "https://technocratic-solutions.netlify.app"
+//   },
+//   {
+//     title: "TechFest Website",
+//     image: "https://www.knowafest.com/files/uploads/TechX%20stage.jpeg-2022112703.jpg",
+//     githubLink: "https://github.com/Chanakya-Das-Sahu/TechFest-WebSite-",
+//     liveLink: "https://mseit-techfest-2025.netlify.app"
+//   },
+//   {
+//     title: "International Conference Website",
+//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRx0-FQ6E1jjHKzTC83b9I5A3dto6weL_hA&s",
+//     githubLink: "https://github.com/chanakya-das-sahu/ICSDP",
+//     liveLink: "https://chanakya-das-sahu.github.io/ICSDP"
+//   }
+// ];
+
+// Update your projects data
 const projects = [
   {
     title: "Ecommerce Web Application",
-    image: "https://img.freepik.com/free-vector/colorful-e-commerce-concept_23-2147660279.jpg",
+    icon: <FaShoppingCart />,
+    description: "Full-featured ecommerce platform with product management, cart, and payment integration",
     githubLink: "https://github.com/Chanakya-Das-Sahu/Ecommerce",
     liveLink: "https://chanakya-ecommerce.netlify.app"
   },
   {
     title: "Notes Web Application",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvc_zyVFVvAI4uYh9c5-R4yt5sjOckPHr3fg&s",
+    icon: <FaStickyNote />,
+    description: "Note-taking app with CRUD operations, categories, and search functionality",
     githubLink: "https://github.com/Chanakya-Das-Sahu/NotesApp",
     liveLink: "https://chanakya-notesapp.netlify.app"
   },
   {
     title: "MCQ Generator",
-    image: "https://static.vecteezy.com/system/resources/thumbnails/003/133/679/small/choose-multiple-option-vector.jpg",
+    icon: <FaQuestionCircle />,
+    description: "AI-powered multiple choice question generator from text paragraphs",
     githubLink: "https://github.com/Chanakya-Das-Sahu/Paragraph-MCQ-Generator---AI--",
     liveLink: "https://chanakya-mcq-generator.netlify.app"
   },
   {
     title: "Customer Care Chatbot",
-    image: "https://thumbs.dreamstime.com/b/print-330119464.jpg",
+    icon: <FaComments />,
+    description: "AI chatbot for customer support with natural language processing",
     githubLink: "https://github.com/Chanakya-Das-Sahu/MATS_GPT",
     liveLink: "https://matsgpt.netlify.app"
   },
   {
     title: "General Chatbot",
-    image: "https://media.istockphoto.com/id/1073043572/vector/robot-icon-bot-sign-design-chatbot-symbol-concept-voice-support-service-bot-online-support.jpg?s=612x612&w=0&k=20&c=IpqF1oBpILXVKmCPj63IftCxgDzNcTe7bvWnd-wSapw=",
+    icon: <FaRobot />,
+    description: "Conversational AI assistant for general queries and information",
     githubLink: "",
     liveLink: "https://chanakya-chatbot.netlify.app"
   },
   {
     title: "Company Website",
-    image: "https://i.pinimg.com/1200x/65/f9/f0/65f9f0c8e34c52318a4bb3b20e4e31cc.jpg",
+    icon: <FaGlobe />,
+    description: "Professional website for Technocratic Solutions with services and portfolio",
     githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
     liveLink: "https://technocratic-solutions.netlify.app"
   },
   {
     title: "TechFest Website",
-    image: "https://www.knowafest.com/files/uploads/TechX%20stage.jpeg-2022112703.jpg",
+    icon: <FaCalendarAlt />,
+    description: "Event website for MSEIT TechFest with registration and schedule",
     githubLink: "https://github.com/Chanakya-Das-Sahu/TechFest-WebSite-",
     liveLink: "https://mseit-techfest-2025.netlify.app"
   },
   {
     title: "International Conference Website",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRx0-FQ6E1jjHKzTC83b9I5A3dto6weL_hA&s",
+    icon: <FaUniversity />,
+    description: "Website for International Conference on Sustainable Development Practices",
     githubLink: "https://github.com/chanakya-das-sahu/ICSDP",
     liveLink: "https://chanakya-das-sahu.github.io/ICSDP"
+  }
+];
+
+// Update your certificates data
+const certificates = [
+  {
+    title: "Academic Certificates",
+    icon: <FaGraduationCap />,
+    issuer: "MATS University, CGBSE, Springboard & Infosys",
+    date: "2024",
+    link: "https://drive.google.com/file/d/1WCN7Vd6EjzYh6-MUICUbBkTNnuJw7Nnp/view"
+  },
+  {
+    title: "Cultural Achievements",
+    icon: <FaTrophy />,
+    issuer: "CREDA, IGKV, MATS University",
+    date: "2023",
+    link: "https://drive.google.com/file/d/1x_46Y7T8VEppzrnY31h4cy9Fi2LkedE8/view"
+  },
+  {
+    title: "Professional Resume",
+    icon: <FaFileAlt />,
+    issuer: "",
+    date: "2024",
+    link: "https://drive.google.com/file/d/1bIl52tP0aV7HGeSvkMUey9mm3Bdv35zZ/view"
   }
 ];
 
@@ -848,28 +947,28 @@ const experiences = [
   }
 ];
 
-const certificates = [
-  {
-    title: "Academic Certificate",
-    image: 'https://ukstudycentre.co.uk/wp-content/uploads/2016/09/stack_of_books-e1478004220548.jpg',
-    issuer: "MATS University , CGBSE , Springboard & Infosys",
-    date: "updated in 2024",
-    link: "https://drive.google.com/file/d/1WCN7Vd6EjzYh6-MUICUbBkTNnuJw7Nnp/view"
-  },
-  {
-    title: "Cultural Certificate",
-    image: 'https://blogassets.leverageedu.com/blog/wp-content/uploads/2019/09/23165152/Co-Curricular.jpg',
-    issuer: "CREDA , IGKV , MATS University",
-    date: "updated in 2023",
-    link: "https://drive.google.com/file/d/1x_46Y7T8VEppzrnY31h4cy9Fi2LkedE8/view"
-  },
-  {
-    title: "CV / Resume",
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTA_oh_oJ_0vJVzwlaTbTOV7QojxSOwHWTtw&s',
-    issuer: "",
-    date: "updated in 2024",
-    link: "https://drive.google.com/file/d/1bIl52tP0aV7HGeSvkMUey9mm3Bdv35zZ/view"
-  }
-];
+// const certificates = [
+//   {
+//     title: "Academic Certificate",
+//     image: 'https://ukstudycentre.co.uk/wp-content/uploads/2016/09/stack_of_books-e1478004220548.jpg',
+//     issuer: "MATS University , CGBSE , Springboard & Infosys",
+//     date: "updated in 2024",
+//     link: "https://drive.google.com/file/d/1WCN7Vd6EjzYh6-MUICUbBkTNnuJw7Nnp/view"
+//   },
+//   {
+//     title: "Cultural Certificate",
+//     image: 'https://blogassets.leverageedu.com/blog/wp-content/uploads/2019/09/23165152/Co-Curricular.jpg',
+//     issuer: "CREDA , IGKV , MATS University",
+//     date: "updated in 2023",
+//     link: "https://drive.google.com/file/d/1x_46Y7T8VEppzrnY31h4cy9Fi2LkedE8/view"
+//   },
+//   {
+//     title: "CV / Resume",
+//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTA_oh_oJ_0vJVzwlaTbTOV7QojxSOwHWTtw&s',
+//     issuer: "",
+//     date: "updated in 2024",
+//     link: "https://drive.google.com/file/d/1bIl52tP0aV7HGeSvkMUey9mm3Bdv35zZ/view"
+//   }
+// ];
 
 export default Portfolio;
