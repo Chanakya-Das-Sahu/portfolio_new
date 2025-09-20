@@ -607,6 +607,76 @@ const Portfolio = () => {
         </section>
 
 
+        {/* Video Portfolio Section */}
+        <section id="videos" className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+                <svg className="w-8 h-8 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                </svg>
+                Video Portfolio
+              </h2>
+              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+              <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+                Watch Demonstration of Presentation and Communication 
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-t-xl">
+                  <iframe
+                    src="https://player.cloudinary.com/embed/?cloud_name=dn4trwbmw&public_id=fqbaavdcglvragehaapv&profile=cld-default&autoplay=false&muted=false"
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    title="Project Demonstration 1"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Project Presentation</h3>
+                  <p className="text-gray-600">Presentation of The Project to Honorable Cabinate Minister</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-t-xl">
+                  <iframe
+                    src="https://player.cloudinary.com/embed/?cloud_name=dn4trwbmw&public_id=q4zg5jsjzzdr9ajxznnr&profile=cld-default&autoplay=false&muted=false"
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    title="Project Demonstration 2"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">Conference Presentation</h3>
+                  <p className="text-gray-600">Presenting SDLC ( Software Development Life Cycle ) in Conference</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Projects Section */}
         <section id="projects" className="">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -671,7 +741,7 @@ const Portfolio = () => {
         <section id="certificates" className=" my-10 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          
+
             {/* Certificates Section */}
             <section id="certificates" className="py-20 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -948,29 +1018,5 @@ const experiences = [
     ]
   }
 ];
-
-// const certificates = [
-//   {
-//     title: "Academic Certificate",
-//     image: 'https://ukstudycentre.co.uk/wp-content/uploads/2016/09/stack_of_books-e1478004220548.jpg',
-//     issuer: "MATS University , CGBSE , Springboard & Infosys",
-//     date: "updated in 2024",
-//     link: "https://drive.google.com/file/d/1WCN7Vd6EjzYh6-MUICUbBkTNnuJw7Nnp/view"
-//   },
-//   {
-//     title: "Cultural Certificate",
-//     image: 'https://blogassets.leverageedu.com/blog/wp-content/uploads/2019/09/23165152/Co-Curricular.jpg',
-//     issuer: "CREDA , IGKV , MATS University",
-//     date: "updated in 2023",
-//     link: "https://drive.google.com/file/d/1x_46Y7T8VEppzrnY31h4cy9Fi2LkedE8/view"
-//   },
-//   {
-//     title: "CV / Resume",
-//     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTA_oh_oJ_0vJVzwlaTbTOV7QojxSOwHWTtw&s',
-//     issuer: "",
-//     date: "updated in 2024",
-//     link: "https://drive.google.com/file/d/1bIl52tP0aV7HGeSvkMUey9mm3Bdv35zZ/view"
-//   }
-// ];
 
 export default Portfolio;
