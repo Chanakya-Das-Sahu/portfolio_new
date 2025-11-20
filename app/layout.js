@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Portfolio - Chanakya Das Sahu",
   description: "MERN Stack Web Developer",
+  icons: {
+    icon: '/images/logo.ico',
+    apple: '/images/logo.ico'
+  }
 };
 
 export default function RootLayout({ children }) {
