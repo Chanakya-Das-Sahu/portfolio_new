@@ -150,30 +150,31 @@ const Portfolio = () => {
   return (
     <div className="font-sans bg-gray-50">
       {/* Navigation */}
+      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 w-full bg-white shadow-md z-50">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
 
-            {/* Logo Section */}
-            <div className="flex items-center gap-2 min-w-0">
+            {/* Logo Section - Made more compact */}
+            <div className="flex items-center gap-2 min-w-0 flex-shrink-0">
               <motion.img
                 src="https://c7.alamy.com/comp/J8685J/ornate-letter-c-J8685J.jpg"
                 alt="Logo"
                 className="h-8 w-8 sm:h-10 sm:w-10 rounded-full flex-shrink-0"
                 whileHover={{ scale: 1.1 }}
               />
-              <span className="font-bold text-gray-800 text-sm sm:text-base truncate">
+              <span className="font-bold text-gray-800 text-sm sm:text-base truncate max-w-[120px] sm:max-w-[200px]">
                 Chanakya Das Sahu
               </span>
             </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
+            {/* Desktop Menu - Now with responsive container */}
+            <div className="hidden md:flex items-center space-x-1 lg:space-x-2 xl:space-x-4 overflow-x-auto scrollbar-hide flex-1 justify-end ml-4">
               {['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`capitalize px-2 py-2 text-sm font-medium whitespace-nowrap transition-colors ${activeSection === item
+                  className={`capitalize px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium whitespace-nowrap transition-colors ${activeSection === item
                       ? 'text-blue-600 border-b-2 border-blue-600'
                       : 'text-gray-500 hover:text-gray-800'
                     }`}
@@ -184,7 +185,7 @@ const Portfolio = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex-shrink-0">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 text-gray-500 hover:text-gray-800 focus:outline-none"
@@ -217,7 +218,7 @@ const Portfolio = () => {
               transition={{ duration: 0.2 }}
               className="md:hidden bg-white shadow-lg border-t border-gray-100"
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-1">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
                 {['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'].map((item) => (
                   <button
                     key={item}
@@ -238,7 +239,6 @@ const Portfolio = () => {
           )}
         </AnimatePresence>
       </nav>
-
       {/* Main Content */}
       <main className="pt-20">
         {/* Home Section */}
