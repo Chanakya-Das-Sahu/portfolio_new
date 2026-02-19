@@ -25,6 +25,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+.red{
+  border:1px solid red;
+}
+
+.green {
+  border:1px solid green;
+}
+
+
+.blue {
+  border:1px solid green ;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

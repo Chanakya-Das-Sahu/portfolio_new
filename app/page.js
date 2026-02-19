@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt, FaHome, FaFileAudio, FaLeaf, FaBookOpen } from 'react-icons/fa';
 import { SiMongodb, SiJavascript } from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
 import {
@@ -125,54 +125,77 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
-      setActiveSection(sectionId);
-      setIsMenuOpen(false);
-    }
+    // First close the menu
+    setIsMenuOpen(false);
+
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        setActiveSection(sectionId);
+      }
+    }, 100); // 100ms delay
   };
 
   return (
     <div className="font-sans bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white shadow-md z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center">
+      <nav className="fixed top-0 left-0 right-0 w-full bg-white shadow-md z-50">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-20">
+
+            {/* Logo Section */}
+            <div className="flex items-center gap-2 min-w-0">
               <motion.img
                 src="https://c7.alamy.com/comp/J8685J/ornate-letter-c-J8685J.jpg"
                 alt="Logo"
-                className="h-10 w-10 rounded-full"
+                className="h-8 w-8 sm:h-10 sm:w-10 rounded-full flex-shrink-0"
                 whileHover={{ scale: 1.1 }}
               />
-              <span className="ml-2 font-bold text-gray-800">Chanakya Das Sahu</span>
+              <span className="font-bold text-gray-800 text-sm sm:text-base truncate">
+                Chanakya Das Sahu
+              </span>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
               {['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`capitalize px-1 py-2 text-sm font-medium ${activeSection === item ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-800'}`}
+                  className={`capitalize px-2 py-2 text-sm font-medium whitespace-nowrap transition-colors ${activeSection === item
+                      ? 'text-blue-600 border-b-2 border-blue-600'
+                      : 'text-gray-500 hover:text-gray-800'
+                    }`}
                 >
                   {item}
                 </button>
               ))}
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-500 hover:text-gray-800 focus:outline-none"
+                className="p-2 text-gray-500 hover:text-gray-800 focus:outline-none"
+                aria-label="Toggle menu"
               >
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   {isMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   ) : (
@@ -184,21 +207,28 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white shadow-lg"
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-white shadow-lg border-t border-gray-100"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {['home', 'achievements', 'gallery', 'skills', 'projects', 'experience', 'certificates'].map((item) => (
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 space-y-1">
+                {['home', 'experience', 'skills', 'achievements', 'gallery', 'projects', 'certificates'].map((item) => (
                   <button
                     key={item}
-                    onClick={() => scrollToSection(item)}
-                    className={`block w-full text-left capitalize px-3 py-2 rounded-md text-base font-medium ${activeSection === item ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'}`}
+                    onClick={() => {
+                      scrollToSection(item);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`block w-full text-left capitalize px-4 py-3 rounded-lg text-base font-medium transition-colors ${activeSection === item
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
+                      }`}
                   >
                     {item}
                   </button>
@@ -212,71 +242,67 @@ const Portfolio = () => {
       {/* Main Content */}
       <main className="pt-20">
         {/* Home Section */}
-        <section id="home" className="min-h-screen flex items-center bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 grid md:grid-cols-2 gap-12 items-center ">
+        <section id="home" className="min-h-screen flex items-center bg-gradient-to-r from-blue-50 to-indigo-50 py-12">
+          {/* Removed max-w-7xl to allow full width, used w-full and px-6 for fluid breathing room */}
+          <div className="w-full px-6 lg:px-16 grid md:grid-cols-2 gap-12 items-center">
+
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className='flex flex-col items-center'
+              className="flex flex-col items-center md:items-start text-center md:text-left"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Chanakya Das Sahu</h1>
-              <h2 className="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">MERN Stack Web & Android Developer</h2>
-              <p className="text-lg text-gray-600 mb-8 max-w-lg">
-                Skilled in effective communication, with proven strengths in group discussions, idea pitching, and delivering impactful presentations.
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-800 mb-4 leading-tight">
+                Chanakya Das Sahu
+              </h1>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-blue-600 mb-6">
+                MERN Stack Developer
+              </h2>
+              <p className="text-lg text-gray-600 mb-8 w-full">
+                Skilled in effective communication, with proven strengths in group discussions,
+                idea pitching, and delivering impactful presentations.
               </p>
-              {/* <div className="flex space-x-4"> */}
-              {/* <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:bg-blue-700 transition"
-                >
-                  Download CV
-                </motion.button> */}
-              {/* <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition"
-                >
-                  Contact Me
-                </motion.button> */}
-              {/* // Adding icons with links of call , gmail , watsapp , linkedin and github  */}
-              <div class="flex space-x-4">
-                <a href="tel:+919399553896" class="text-blue-600 hover:text-blue-800">
-                  <i class="fas fa-phone-alt h-16 w-16"></i>
-                </a>
-                <a href="mailto:ccccsahu@gmail.com" class="text-blue-600 hover:text-blue-800">
-                  <i class="fas fa-envelope h-16 w-16"></i>
-                </a>
-                <a href="https://wa.me/919399553896" class="text-blue-600 hover:text-blue-800">
-                  <i class="fab fa-whatsapp h-16 w-16"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/chanakya-das-sahu-a56470252" class="text-blue-600 hover:text-blue-800">
-                  <i class="fab fa-linkedin h-16 w-16"></i>
-                </a>
-                <a href="https://github.com/chanakya-das-sahu" class="text-blue-600 hover:text-blue-800">
-                  <i class="fab fa-github h-16 w-16"></i>
-                </a>
+
+              {/* Responsive Icon Container */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-6">
+                {[
+                  { href: "tel:+919399553896", icon: "fas fa-phone-alt" },
+                  { href: "mailto:ccccsahu@gmail.com", icon: "fas fa-envelope" },
+                  { href: "https://wa.me/919399553896", icon: "fab fa-whatsapp" },
+                  { href: "https://www.linkedin.com/in/chanakya-das-sahu-a56470252", icon: "fab fa-linkedin" },
+                  { href: "https://github.com/chanakya-das-sahu", icon: "fab fa-github" }
+                ].map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href={link.href}
+                    whileHover={{ scale: 1.2, y: -5 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-3xl text-blue-600 hover:text-indigo-700 transition-colors"
+                  >
+                    <i className={link.icon}></i>
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center"
+              className="flex justify-center items-center w-full"
             >
-              <div className="relative">
-                <div className="absolute -inset-4 bg-blue-200 rounded-3xl transform rotate-6 opacity-30"></div>
+              <div className="relative w-full aspect-square sm:w-4/5 md:w-full mx-2">
+                {/* <div className="absolute -inset-4 bg-blue-200 rounded-3xl transform rotate-6 opacity-30"></div> */}
                 <img
                   src="/images/photo.jpg"
                   alt="Chanakya Das Sahu"
-                  className="relative rounded-2xl shadow-xl w-full max-w-md"
+                  className="relative rounded-2xl shadow-xl w-full h-full object-cover"
                 />
               </div>
             </motion.div>
+
           </div>
         </section>
-
 
         <section id="experience" className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -625,7 +651,7 @@ const Portfolio = () => {
               </h2>
               <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
               <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-                Watch Demonstration of Presentation and Communication 
+                Watch Demonstration of Presentation and Communication
               </p>
             </motion.div>
 
@@ -857,72 +883,27 @@ const skills = [
   { name: "Java", icon: <FaJava /> }
 ];
 
-// const projects = [
-//   {
-//     title: "Ecommerce Web Application",
-//     image: "https://img.freepik.com/free-vector/colorful-e-commerce-concept_23-2147660279.jpg",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/Ecommerce",
-//     liveLink: "https://chanakya-ecommerce.netlify.app"
-//   },
-//   {
-//     title: "Notes Web Application",
-//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvc_zyVFVvAI4uYh9c5-R4yt5sjOckPHr3fg&s",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/NotesApp",
-//     liveLink: "https://chanakya-notesapp.netlify.app"
-//   },
-//   {
-//     title: "MCQ Generator",
-//     image: "https://static.vecteezy.com/system/resources/thumbnails/003/133/679/small/choose-multiple-option-vector.jpg",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/Paragraph-MCQ-Generator---AI--",
-//     liveLink: "https://chanakya-mcq-generator.netlify.app"
-//   },
-//   {
-//     title: "Customer Care Chatbot",
-//     image: "https://thumbs.dreamstime.com/b/print-330119464.jpg",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/MATS_GPT",
-//     liveLink: "https://matsgpt.netlify.app"
-//   },
-//   {
-//     title: "General Chatbot",
-//     image: "https://media.istockphoto.com/id/1073043572/vector/robot-icon-bot-sign-design-chatbot-symbol-concept-voice-support-service-bot-online-support.jpg?s=612x612&w=0&k=20&c=IpqF1oBpILXVKmCPj63IftCxgDzNcTe7bvWnd-wSapw=",
-//     githubLink: "",
-//     liveLink: "https://chanakya-chatbot.netlify.app"
-//   },
-//   {
-//     title: "Company Website",
-//     image: "https://i.pinimg.com/1200x/65/f9/f0/65f9f0c8e34c52318a4bb3b20e4e31cc.jpg",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
-//     liveLink: "https://technocratic-solutions.netlify.app"
-//   },
-//   {
-//     title: "TechFest Website",
-//     image: "https://www.knowafest.com/files/uploads/TechX%20stage.jpeg-2022112703.jpg",
-//     githubLink: "https://github.com/Chanakya-Das-Sahu/TechFest-WebSite-",
-//     liveLink: "https://mseit-techfest-2025.netlify.app"
-//   },
-//   {
-//     title: "International Conference Website",
-//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRx0-FQ6E1jjHKzTC83b9I5A3dto6weL_hA&s",
-//     githubLink: "https://github.com/chanakya-das-sahu/ICSDP",
-//     liveLink: "https://chanakya-das-sahu.github.io/ICSDP"
-//   }
-// ];
-
-// Update your projects data
 const projects = [
   {
-    title: "Ecommerce Web Application",
-    icon: <FaShoppingCart />,
-    description: "Full-featured ecommerce platform with product management, cart, and payment integration",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/Ecommerce",
-    liveLink: "https://chanakya-ecommerce.netlify.app"
+    title: "Room Rental System (App-Dost)",
+    icon: <FaHome />,
+    description: "A comprehensive room rental platform featuring Supabase SQL database integration and secure authentication.",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/app-dost",
+    liveLink: "https://chanakya-app-dost.vercel.app/"
   },
   {
-    title: "Notes Web Application",
-    icon: <FaStickyNote />,
-    description: "Note-taking app with CRUD operations, categories, and search functionality",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/NotesApp",
-    liveLink: "https://chanakya-notesapp.netlify.app"
+    title: "YouTube Transcriptor",
+    icon: <FaFileAudio />,
+    description: "Tool to extract and generate text transcripts from YouTube videos for easy content consumption.",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/YoutubeTranscriptor",
+    liveLink: "https://youtube-transcriptor.netlify.app/transcript"
+  },
+  {
+    title: "AI Based Education Chatbot ( vocal )",
+    icon: <FaBookOpen />,
+    description: "An AI-driven educational platform featuring a specialized chatbot and vocal support for an interactive learning experience.",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/Sage",
+    liveLink: "https://citrine-sage.netlify.app/"
   },
   {
     title: "MCQ Generator",
@@ -939,7 +920,7 @@ const projects = [
     liveLink: "https://matsgpt.netlify.app"
   },
   {
-    title: "General Chatbot",
+    title: "General Chatbot ( Gemini API )",
     icon: <FaRobot />,
     description: "Conversational AI assistant for general queries and information",
     githubLink: "",
@@ -995,9 +976,20 @@ const certificates = [
 
 const experiences = [
   {
+    position: "Nextjs Full Stack Developer",
+    company: "Zenix Automotive Pvt.Ltd. ( Noida , India )",
+    duration: "Jan 2026 to Present",
+    projects: ["ChargeFlow - EV Powerstations Management and Supplychain"],
+    responsibilities: [
+      "Powerstations rendering on Map with various filters",
+      "Profile Creation , Frontend Components Design",
+      , "Responsive Design"
+    ]
+  },
+  {
     position: "React Firebase Developer ",
     company: "Crakcode ( Delhi , India )",
-    duration: "9 June 2024 to Present",
+    duration: "June 2025 to Dec 2025",
     projects: ["EdTech Platform ( Web App )"],
     responsibilities: [
       "Firebase Schemas",
