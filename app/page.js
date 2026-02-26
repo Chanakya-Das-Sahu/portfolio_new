@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt, FaHome, FaFileAudio, FaLeaf, FaBookOpen } from 'react-icons/fa';
 import { SiMongodb, SiJavascript } from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
+import { GiRobotGrab } from "react-icons/gi";
 import {
   FaShoppingCart,
   FaStickyNote,
@@ -896,7 +897,7 @@ const projects = [
     icon: <FaFileAudio />,
     description: "Tool to extract and generate text transcripts from YouTube videos for easy content consumption.",
     githubLink: "https://github.com/Chanakya-Das-Sahu/YoutubeTranscriptor",
-    liveLink: "https://youtube-transcriptor.netlify.app/transcript"
+    liveLink: "https://youtube-transcriptor.netlify.app/"
   },
   {
     title: "AI Based Education Chatbot ( vocal )",
@@ -923,11 +924,18 @@ const projects = [
     title: "General Chatbot ( Gemini API )",
     icon: <FaRobot />,
     description: "Conversational AI assistant for general queries and information",
-    githubLink: "",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/chatBot",
     liveLink: "https://chanakya-chatbot.netlify.app"
   },
   {
-    title: "Company Website",
+    title: "Vigyantra",
+    icon : <GiRobotGrab />,
+    description : "Electronic IOT shop serves to customer",
+    githubLink : "https://github.com/Chanakya-Das-Sahu/vigyantra",
+    liveLink:"https://vigyantra.netlify.app/"
+  },
+  {
+    title: "Technocratic Solutions Ltd.",
     icon: <FaGlobe />,
     description: "Professional website for Technocratic Solutions with services and portfolio",
     githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
