@@ -411,7 +411,7 @@ const Portfolio = () => {
   return (
     <div className="font-sans bg-gray-50">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 w-full bg-white shadow-md z-50">
+      <nav className="fixed top-0 left-0 w-screen bg-white shadow-md z-50">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
             <div className="flex items-center gap-2 min-w-0 flex-shrink-0">
