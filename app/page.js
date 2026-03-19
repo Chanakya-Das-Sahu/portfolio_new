@@ -74,13 +74,13 @@ const skills = [
 ];
 
 const projects = [
-  {
-    title: "Room Rental System (App-Dost)",
-    icon: <FaHome />,
-    description: "A comprehensive room rental platform featuring Supabase SQL database integration and secure authentication.",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/app-dost",
-    liveLink: "https://chanakya-app-dost.vercel.app/"
-  },
+  // {
+  //   title: "Room Rental System (App-Dost)",
+  //   icon: <FaHome />,
+  //   description: "A comprehensive room rental platform featuring Supabase SQL database integration and secure authentication.",
+  //   githubLink: "https://github.com/Chanakya-Das-Sahu/app-dost",
+  //   liveLink: "https://chanakya-app-dost.vercel.app/"
+  // },
   {
     title: "YouTube Transcriptor",
     icon: <FaFileAudio />,
