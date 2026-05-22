@@ -74,12 +74,20 @@ const skills = [
 ];
 
 const projects = [
+
   {
     title: "Learning Management System",
     icon: <SiArkecosystem />,
     description: "A Learning Management system for student and trainer interaction and management.",
     githubLink: "https://github.com/Chanakya-Das-Sahu/lms",
     liveLink: "https://chanakya-labs.netlify.app/"
+  },
+  {
+    title: "YouTube Transcriptor",
+    icon: <FaFileAudio />,
+    description: "Tool to extract and generate text transcripts from YouTube videos for easy content consumption.",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/YoutubeTranscriptor",
+    liveLink: "https://youtube-transcriptor.netlify.app/"
   },
   {
     title: "MCQ Generator",
