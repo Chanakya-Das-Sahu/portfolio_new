@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt, FaHome, FaFileAudio, FaLeaf, FaBookOpen } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaMedal, FaCertificate, FaCode, FaJava, FaReact, FaNodeJs, FaGitAlt, FaHome, FaFileAudio, FaLeaf, FaBookOpen, FaUserGraduate } from 'react-icons/fa';
 import { SiMongodb, SiJavascript, SiArkecosystem } from 'react-icons/si';
 import { FiExternalLink } from 'react-icons/fi';
 import { GiRobotGrab } from "react-icons/gi";
@@ -18,6 +18,7 @@ import {
   FaTrophy,
   FaFileAlt
 } from 'react-icons/fa';
+import ProjectCard from '@/components/ProjectCard';
 
 // Move static data outside component to prevent recreation
 const achievements = [
@@ -73,21 +74,20 @@ const skills = [
   { name: "Java", icon: <FaJava /> }
 ];
 
-const projects = [
-
+const webApps = [
   {
-    title: "Learning Management System",
-    icon: <SiArkecosystem />,
-    description: "A Learning Management system for student and trainer interaction and management.",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/lms",
-    liveLink: "https://chanakya-labs.netlify.app/"
+    title: "Chanakya E-Commerce",
+    icon: <FaShoppingCart />,
+    description: "Full-stack e-commerce web application featuring secure payment processing via Razorpay integration",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/ecommerce",
+    liveLink: "https://chanakya-ecommerce.netlify.app"
   },
   {
-    title: "YouTube Transcriptor",
-    icon: <FaFileAudio />,
-    description: "Tool to extract and generate text transcripts from YouTube videos for easy content consumption.",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/YoutubeTranscriptor",
-    liveLink: "https://youtube-transcriptor.netlify.app/"
+    title: "ATS Optimizer",
+    icon: <FaUserGraduate />,
+    description: "Dynamic resume optimizer that generates tailored content and MCQs based on specific job descriptions",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/ATS-Optimizer",
+    liveLink: "https://get-optimized-resume.netlify.app"
   },
   {
     title: "MCQ Generator",
@@ -97,26 +97,20 @@ const projects = [
     liveLink: "https://chanakya-mcq-generator.netlify.app"
   },
   {
-    title: "YouTube Transcriptor",
-    icon: <FaFileAudio />,
-    description: "Tool to extract and generate text transcripts from YouTube videos for easy content consumption.",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/YoutubeTranscriptor",
-    liveLink: "https://youtube-transcriptor.netlify.app/"
-  },
-  {
     title: "Customer Care Chatbot",
     icon: <FaComments />,
     description: "AI chatbot for customer support with natural language processing",
     githubLink: "https://github.com/Chanakya-Das-Sahu/MATS_GPT",
     liveLink: "https://matsgpt.netlify.app"
-  },
-  
-  {
+  }
+];
+
+const websites = [ {
     title: "Vigyantra",
-    icon : <GiRobotGrab />,
-    description : "Electronic IOT shop serves to customer",
-    githubLink : "https://github.com/Chanakya-Das-Sahu/vigyantra",
-    liveLink:"https://vigyantra.netlify.app/"
+    icon: <GiRobotGrab />,
+    description: "Electronic IOT shop serves to customer",
+    githubLink: "https://github.com/Chanakya-Das-Sahu/vigyantra",
+    liveLink: "https://vigyantra.netlify.app/"
   },
   {
     title: "Technocratic Solutions Ltd.",
@@ -202,7 +196,7 @@ const experiences = [
   }
 ];
 
-const navItems = ['home', 'experience','projects', 'skills', 'achievements', 'gallery','certificates'];
+const navItems = ['home', 'experience', 'projects', 'skills', 'achievements', 'gallery', 'certificates'];
 
 // Optimized Image Component with lazy loading
 const OptimizedImage = ({ src, alt, className, priority = false }) => {
@@ -373,7 +367,7 @@ const Portfolio = () => {
 
   const scrollToSection = useCallback((sectionId) => {
     setIsMenuOpen(false);
-    
+
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -427,11 +421,10 @@ const Portfolio = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`capitalize px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${
-                    activeSection === item
-                      ? 'text-blue-600 border-b-2 border-blue-600'
-                      : 'text-gray-500 hover:text-gray-800'
-                  }`}
+                  className={`capitalize px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${activeSection === item
+                    ? 'text-blue-600 border-b-2 border-blue-600'
+                    : 'text-gray-500 hover:text-gray-800'
+                    }`}
                 >
                   {item}
                 </button>
@@ -475,11 +468,10 @@ const Portfolio = () => {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className={`block w-full text-left capitalize px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                      activeSection === item
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
-                    }`}
+                    className={`block w-full text-left capitalize px-4 py-3 rounded-lg text-base font-medium transition-colors ${activeSection === item
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
+                      }`}
                   >
                     {item}
                   </button>
@@ -612,55 +604,27 @@ const Portfolio = () => {
 
 
 
-         {/* Projects Section */}
+        {/* Projects Section */}
         <section id="projects" className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
+            <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Projects</h2>
               <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-            </motion.div>
+            </div>
 
+            {/* Web Apps Section */}
+            <h3 className="text-2xl font-semibold text-gray-700 mb-8 pl-2 text-center">Web Applications</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {webApps.map((project, index) => (
+                <ProjectCard key={index} project={project} index={index} />
+              ))}
+            </div>
+
+            {/* Websites Section */}
+            <h3 className="text-2xl font-semibold text-gray-700 mb-8 pl-2 text-center">Websites</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition flex flex-col"
-                >
-                  <div className="text-4xl text-blue-600 mb-4 flex justify-center">
-                    {project.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 text-center text-sm flex-grow">{project.description}</p>
-                  <div className="flex justify-between items-center mt-auto">
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-blue-600 hover:text-blue-800 text-sm"
-                    >
-                      <FaGithub className="mr-1" /> Code
-                    </a>
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-green-600 hover:text-green-800 text-sm"
-                    >
-                      <FiExternalLink className="mr-1" /> Live Demo
-                    </a>
-                  </div>
-                </motion.div>
+              {websites.map((project, index) => (
+                <ProjectCard key={`web-${index}`} project={project} index={index} />
               ))}
             </div>
           </div>
@@ -892,7 +856,7 @@ const Portfolio = () => {
           </div>
         </section>
 
-       
+
 
         {/* Certificates Section */}
         <section id="certificates" className="py-20 bg-white">
