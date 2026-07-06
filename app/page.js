@@ -92,6 +92,7 @@ const webApps = [
   {
     title: "MCQ Generator",
     icon: <FaQuestionCircle />,
+    youtube_url: 'https://youtu.be/oCTGCmHuz90',
     description: "AI-powered multiple choice question generator from text paragraphs",
     githubLink: "https://github.com/Chanakya-Das-Sahu/Paragraph-MCQ-Generator---AI--",
     liveLink: "https://chanakya-mcq-generator.netlify.app"
@@ -99,40 +100,41 @@ const webApps = [
   {
     title: "Customer Care Chatbot",
     icon: <FaComments />,
+    youtube_url: 'https://youtu.be/wWyhrTh-5KM',
     description: "AI chatbot for customer support with natural language processing",
     githubLink: "https://github.com/Chanakya-Das-Sahu/MATS_GPT",
     liveLink: "https://matsgpt.netlify.app"
   }
 ];
 
-const websites = [ {
-    title: "Vigyantra",
-    icon: <GiRobotGrab />,
-    description: "Electronic IOT shop serves to customer",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/vigyantra",
-    liveLink: "https://vigyantra.netlify.app/"
-  },
-  {
-    title: "Technocratic Solutions Ltd.",
-    icon: <FaGlobe />,
-    description: "Professional website for Technocratic Solutions with services and portfolio",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
-    liveLink: "https://technocratic-solutions.netlify.app"
-  },
-  {
-    title: "TechFest Website",
-    icon: <FaCalendarAlt />,
-    description: "Event website for MSEIT TechFest with registration and schedule",
-    githubLink: "https://github.com/Chanakya-Das-Sahu/TechFest-WebSite-",
-    liveLink: "https://mseit-techfest-2025.netlify.app"
-  },
-  {
-    title: "International Conference Website",
-    icon: <FaUniversity />,
-    description: "Website for International Conference on Sustainable Development Practices",
-    githubLink: "https://github.com/chanakya-das-sahu/ICSDP",
-    liveLink: "https://chanakya-das-sahu.github.io/ICSDP"
-  }
+const websites = [{
+  title: "Vigyantra",
+  icon: <GiRobotGrab />,
+  description: "Electronic IOT shop serves to customer",
+  githubLink: "https://github.com/Chanakya-Das-Sahu/vigyantra",
+  liveLink: "https://vigyantra.netlify.app/"
+},
+{
+  title: "Technocratic Solutions Ltd.",
+  icon: <FaGlobe />,
+  description: "Professional website for Technocratic Solutions with services and portfolio",
+  githubLink: "https://github.com/Chanakya-Das-Sahu/TechnoCreaticsSolution",
+  liveLink: "https://technocratic-solutions.netlify.app"
+},
+{
+  title: "TechFest Website",
+  icon: <FaCalendarAlt />,
+  description: "Event website for MSEIT TechFest with registration and schedule",
+  githubLink: "https://github.com/Chanakya-Das-Sahu/TechFest-WebSite-",
+  liveLink: "https://mseit-techfest-2025.netlify.app"
+},
+{
+  title: "International Conference Website",
+  icon: <FaUniversity />,
+  description: "Website for International Conference on Sustainable Development Practices",
+  githubLink: "https://github.com/chanakya-das-sahu/ICSDP",
+  liveLink: "https://chanakya-das-sahu.github.io/ICSDP"
+}
 ];
 
 const certificates = [
@@ -613,7 +615,9 @@ const Portfolio = () => {
             </div>
 
             {/* Web Apps Section */}
-            <h3 className="text-2xl font-semibold text-gray-700 mb-8 pl-2 text-center">Web Applications</h3>
+            <h3 className="text-2xl font-semibold text-gray-700 mb-8 pl-2 text-center">
+              Web Applications
+            </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {webApps.map((project, index) => (
                 <ProjectCard key={index} project={project} index={index} />
