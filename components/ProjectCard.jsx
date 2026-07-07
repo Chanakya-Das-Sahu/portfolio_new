@@ -1,9 +1,10 @@
 import React from "react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"; // Add these imports
 
-// Helper to extract YouTube video ID
 const getYouTubeId = (url) => {
   if (!url) return null;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 };
@@ -34,23 +35,29 @@ const ProjectCard = ({ project, index }) => {
       <div className="p-5 flex flex-col flex-1">
         <h4 className="font-bold text-lg mb-2">{project.title}</h4>
         <p className="text-gray-600 text-sm flex-1">{project.description}</p>
-        <div className="mt-4 flex gap-3">
+
+        {/* Links with descriptive icons */}
+        <div className="mt-4 flex items-center gap-3">
           <a
             href={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-blue-600 hover:underline"
+            className="text-gray-600 hover:text-black transition-colors p-2 rounded-full hover:bg-gray-100"
+            aria-label={`View ${project.title} source code on GitHub`}
+            title="GitHub Repository"
           >
-            GitHub
+            <FaGithub className="w-5 h-5" />
           </a>
           {project.liveLink && (
             <a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-blue-600 hover:underline"
+              className="text-blue-600 hover:text-blue-800 transition-colors p-2 rounded-full hover:bg-blue-50"
+              aria-label={`Open ${project.title} live demo`}
+              title="Live Demo"
             >
-              Live Demo
+              <FaExternalLinkAlt className="w-4 h-4" />
             </a>
           )}
         </div>
